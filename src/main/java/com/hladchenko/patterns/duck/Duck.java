@@ -1,5 +1,8 @@
 package com.hladchenko.patterns.duck;
 
+import com.hladchenko.patterns.duck.fly.FlyBehavior;
+import com.hladchenko.patterns.duck.quack.QuackBehavior;
+
 public abstract class Duck {
 
     FlyBehavior flyBehavior;
@@ -17,5 +20,13 @@ public abstract class Duck {
 
     public void swim() {
         System.out.println("That's good!");
+    }
+
+    public void setFlyBehavior(FlyBehavior fb) {
+        flyBehavior = fb;
+    }
+
+    public void setQuackBehavior(QuackBehavior qb) {
+        quackBehavior = qb;
     }
 }

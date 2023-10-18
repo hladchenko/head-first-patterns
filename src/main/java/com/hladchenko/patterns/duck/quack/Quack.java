@@ -1,4 +1,4 @@
-package com.hladchenko.patterns.duck;
+package com.hladchenko.patterns.duck.quack;
 
 public class Quack implements QuackBehavior{
     @Override

@@ -1,4 +1,4 @@
-package com.hladchenko.patterns.duck;
+package com.hladchenko.patterns.duck.fly;
 
 public class FlyWithWings implements FlyBehavior{
     @Override

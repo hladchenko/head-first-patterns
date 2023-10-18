@@ -1,6 +1,9 @@
 package com.hladchenko.patterns.duck;
 
-public class MallardDuck extends Duck{
+import com.hladchenko.patterns.duck.fly.FlyWithWings;
+import com.hladchenko.patterns.duck.quack.Quack;
+
+public class MallardDuck extends Duck {
 
     public MallardDuck() {
         quackBehavior = new Quack();
