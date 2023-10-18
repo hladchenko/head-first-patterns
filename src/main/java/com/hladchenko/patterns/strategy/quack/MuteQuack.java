@@ -1,4 +1,4 @@
-package com.hladchenko.patterns.duck.quack;
+package com.hladchenko.patterns.strategy.quack;
 
 public class MuteQuack implements QuackBehavior {
 

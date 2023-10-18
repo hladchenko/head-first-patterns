@@ -1,7 +1,7 @@
-package com.hladchenko.patterns.duck;
+package com.hladchenko.patterns.strategy;
 
-import com.hladchenko.patterns.duck.fly.FlyWithWings;
-import com.hladchenko.patterns.duck.quack.Quack;
+import com.hladchenko.patterns.strategy.fly.FlyWithWings;
+import com.hladchenko.patterns.strategy.quack.Quack;
 
 public class MallardDuck extends Duck {
 

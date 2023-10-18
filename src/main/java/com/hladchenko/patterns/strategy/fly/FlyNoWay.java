@@ -1,4 +1,4 @@
-package com.hladchenko.patterns.duck.fly;
+package com.hladchenko.patterns.strategy.fly;
 
 public class FlyNoWay implements FlyBehavior{
     @Override

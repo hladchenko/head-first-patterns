@@ -1,7 +1,7 @@
-package com.hladchenko.patterns.duck;
+package com.hladchenko.patterns.strategy;
 
-import com.hladchenko.patterns.duck.fly.FlyBehavior;
-import com.hladchenko.patterns.duck.quack.QuackBehavior;
+import com.hladchenko.patterns.strategy.fly.FlyBehavior;
+import com.hladchenko.patterns.strategy.quack.QuackBehavior;
 
 public abstract class Duck {
 
