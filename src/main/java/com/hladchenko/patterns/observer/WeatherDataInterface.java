@@ -1,11 +1,6 @@
 package com.hladchenko.patterns.observer;
 
 public interface WeatherDataInterface {
-    float getTemperature();
-
-    float getHumidity();
-
-    float getPressure();
 
     /**
      * This method gets called
@@ -13,5 +8,5 @@ public interface WeatherDataInterface {
      * have been updated
      *
      */
-    void measurementsChanged();
+    void measurementsChanged(float newTemperature, float newHumidity, float newPressure);
 }

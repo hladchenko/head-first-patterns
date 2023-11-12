@@ -25,6 +25,8 @@ public class Main {
         weatherData.registerObserver(observer2);
         weatherData.registerObserver(observer3);
 
-        weatherData.measurementsChanged();
+        weatherData.measurementsChanged(12f, 15f, 30f);
+        System.out.println("--------------------------------");
+        weatherData.measurementsChanged(0f, 25f, 300f);
     }
 }

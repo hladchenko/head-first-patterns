@@ -8,23 +8,8 @@ public class WeatherData implements WeatherDataInterface, Subject {
     private final List<Observer> observers = new ArrayList<>();
 
     @Override
-    public float getTemperature() {
-        return 0;
-    }
-
-    @Override
-    public float getHumidity() {
-        return 0;
-    }
-
-    @Override
-    public float getPressure() {
-        return 0;
-    }
-
-    @Override
-    public void measurementsChanged() {
-        notifyObservers();
+    public void measurementsChanged(float newTemperature, float newHumidity, float newPressure) {
+        notifyObservers(newTemperature, newHumidity, newPressure);
     }
 
     @Override
@@ -38,9 +23,11 @@ public class WeatherData implements WeatherDataInterface, Subject {
     }
 
     @Override
-    public void notifyObservers() {
+    public void notifyObservers(float newTemperature, float newHumidity, float newPressure) {
         for (Observer observer : observers) {
-            observer.update(getTemperature(), getPressure(), getHumidity());
+            observer.update(newTemperature, newPressure, newHumidity);
         }
     }
+
+
 }

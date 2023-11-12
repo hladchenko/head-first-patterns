@@ -5,5 +5,5 @@ public interface Subject {
 
     void removeObserver(Observer observer);
 
-    void notifyObservers();
+    void notifyObservers(float newTemperature, float newHumidity, float newPressure);
 }
