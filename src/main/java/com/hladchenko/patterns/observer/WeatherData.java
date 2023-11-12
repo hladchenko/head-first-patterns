@@ -1,16 +1,11 @@
 package com.hladchenko.patterns.observer;
 
-import com.hladchenko.patterns.observer.display.CurrentConditionsDisplay;
-import com.hladchenko.patterns.observer.display.Display;
-import com.hladchenko.patterns.observer.display.ForecastsDisplay;
-import com.hladchenko.patterns.observer.display.StatisticsDisplay;
+import java.util.ArrayList;
+import java.util.List;
 
-public class WeatherData implements WeatherDataInterface {
+public class WeatherData implements WeatherDataInterface, Subject {
 
-    Display currentConditionsDisplay = new CurrentConditionsDisplay();
-    Display forecastsDisplay = new ForecastsDisplay();
-    Display statisticsDisplay = new StatisticsDisplay();
-
+    private final List<Observer> observers = new ArrayList<>();
 
     @Override
     public float getTemperature() {
@@ -29,14 +24,23 @@ public class WeatherData implements WeatherDataInterface {
 
     @Override
     public void measurementsChanged() {
+        notifyObservers();
+    }
 
-        float temp = getTemperature();
-        float pressure = getPressure();
-        float humidity = getHumidity();
+    @Override
+    public void registerObserver(Observer observer) {
+        observers.add(observer);
+    }
 
-        currentConditionsDisplay.update(temp, pressure, humidity);
-        statisticsDisplay.update(temp, pressure, humidity);
-        forecastsDisplay.update(temp, pressure, humidity);
+    @Override
+    public void removeObserver(Observer observer) {
+        observers.remove(observer);
+    }
 
+    @Override
+    public void notifyObservers() {
+        for (Observer observer : observers) {
+            observer.update(getTemperature(), getPressure(), getHumidity());
+        }
     }
 }
