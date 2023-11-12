@@ -1,15 +1,28 @@
 package com.hladchenko.patterns.observer.display;
 
 import com.hladchenko.patterns.observer.Observer;
+import com.hladchenko.patterns.observer.Subject;
 
-public class ForecastsDisplay extends AbstractDisplay implements Observer {
+public class ForecastsDisplay implements Observer, Display {
+
+    private float temperature;
+    private float humidity;
+    private final Subject weatherData;
+
+    public ForecastsDisplay(Subject weatherData) {
+        this.weatherData = weatherData;
+        weatherData.registerObserver(this);
+    }
+
     @Override
-    public void update(float temp, float pressure, float humidity) {
-        System.out.printf("ForecastsDisplay notified with: %f %f %f%n", temp, pressure, humidity);
+    public void update(float temperature, float humidity, float pressure) {
+        this.temperature = temperature;
+        this.humidity = humidity;
+        display();
     }
 
     @Override
     public void display() {
-
+        System.out.println("Current forecast: ... ");
     }
 }
