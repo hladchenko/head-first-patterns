@@ -3,13 +3,18 @@ package com.hladchenko.patterns.observer;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WeatherData implements WeatherDataInterface, Subject {
+public class WeatherData implements Subject {
 
-    private final List<Observer> observers = new ArrayList<>();
+    private final List<Observer> observers;
+    private float temperature;
+    private float humidity;
+    private float pressure;
 
-    @Override
-    public void measurementsChanged(float newTemperature, float newHumidity, float newPressure) {
-        notifyObservers(newTemperature, newHumidity, newPressure);
+    public WeatherData() {
+        this.observers = new ArrayList<>();
+    }
+    public void measurementsChanged() {
+        notifyObservers();
     }
 
     @Override
@@ -19,15 +24,47 @@ public class WeatherData implements WeatherDataInterface, Subject {
 
     @Override
     public void removeObserver(Observer observer) {
-        observers.remove(observer);
-    }
-
-    @Override
-    public void notifyObservers(float newTemperature, float newHumidity, float newPressure) {
-        for (Observer observer : observers) {
-            observer.update(newTemperature, newPressure, newHumidity);
+        int i = this.observers.indexOf(observer);
+        if (i >= 0) {
+            observers.remove(observer);
         }
     }
 
+    @Override
+    public void notifyObservers() {
+        for (Observer observer : observers) {
+            observer.update(getTemperature(), getHumidity(), getPressure());
+        }
+    }
 
+    public float getTemperature() {
+        return temperature;
+    }
+
+    public void setTemperature(float temperature) {
+        this.temperature = temperature;
+    }
+
+    public float getHumidity() {
+        return humidity;
+    }
+
+    public void setHumidity(float humidity) {
+        this.humidity = humidity;
+    }
+
+    public float getPressure() {
+        return pressure;
+    }
+
+    public void setPressure(float pressure) {
+        this.pressure = pressure;
+    }
+
+    public void setMeasurements(float temperature, float humidity, float pressure) {
+        this.temperature = temperature;
+        this.humidity = humidity;
+        this.pressure = pressure;
+        measurementsChanged();
+    }
 }
